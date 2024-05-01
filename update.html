@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Details</title>
+    <a href="login.html" style="color: #fb3f00; text-decoration: none;">Main Screen</a>
+    
+<style>
+        body {
+            background-color: #C5F1EF;
+            color: #333; 
+            font-family: Cambria, sans-serif; 
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Update Details</h1>
+
+    <!-- Search Form -->
+    <form id="searchForm" onsubmit="searchDetails(); return false;">
+        <label for="searchQuery">Search by LRN:</label><br>
+        <input type="text" id="searchQuery" name="searchQuery">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display Search Results -->
+    <div id="displayDetails" style="display: none;">
+        <!-- Display the details similar to search.html -->
+    </div>
+
+    <!-- Update Form -->
+    <form id="updateForm" onsubmit="updateDetails(); return false;" style="display: none;">
+        <div class="form-column">
+            <label for="updateFullName">Full Name:</label><br>
+            <input type="text" id="updateFullName" name="updateFullName"><br><br>
+
+            <label for="updateEmail">Email:</label><br>
+            <input type="email" id="updateEmail" name="updateEmail"><br><br>
+
+            <label for="updateBirthday">Date of Birth:</label><br>
+            <input type="date" id="updateBirthday" name="updateBirthday"><br><br>
+
+            <label for="updateAge">Age:</label><br>
+            <input type="number" id="updateAge" name="updateAge"><br><br>
+
+            <label for="updateGender">Gender:</label>
+            <select id="updateGender" name="updateGender">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <br><br>
+
+            <label for="updateConditions">Current Medical Conditions:</label><br>
+            <input type="text" id="updateConditions" name="updateConditions"><br><br>
+
+            <label for="updateFamily">Family Medical History:</label><br>
+            <input type="text" id="updateFamily" name="updateFamily"><br><br>
+        
+	   <label for="updateLrn">LRN:</label><br>
+	   <input type="text" id="updateLrn" name="updateLrn"><br><br>
+
+            <label for="updateContactPerson">Contact Person:</label><br>
+            <input type="text" id="updateContactPerson" name="updateContactPerson"><br><br>
+
+            <label for="updateContactNumber">Contact Number:</label><br>
+            <input type="text" id="updateContactNumber" name="updateContactNumber"><br><br>
+
+            <label for="updateAddress">Address:</label><br>
+            <input type="text" id="updateAddress" name="updateAddress"><br><br>
+
+            <label for="updateYear">Grade Level and Strand:</label><br>
+            <input type="text" id="updateYear" name="updateYear"><br><br>
+
+            <label for="updateBlood">Blood Type:</label><br>
+            <input type="text" id="updateBlood" name="updateBlood"><br><br>
+
+            <label for="updateVitamins">Current Medications, Supplements, and Vitamins:</label><br>
+            <input type="text" id="updateVitamins" name="updateVitamins"><br><br>
+
+            <label for="updateAllergy">Allergies/Adverse Reactions to Treatment:</label><br>
+            <input type="text" id="updateAllergy" name="updateAllergy"><br><br>
+
+            <button type="submit">Update Details</button>
+        </div>
+    </form>
+
+    <script>
+        // JavaScript functions for searching and updating details
+        function searchDetails() {
+            var searchQuery = document.getElementById('searchQuery').value.toLowerCase();
+            var formData = JSON.parse(localStorage.getItem('formData'));
+
+            if (formData && formData.lrn.toLowerCase() === searchQuery) {
+                // Populate the update form with existing data
+                document.getElementById('updateFullName').value = formData.fullName;
+                document.getElementById('updateEmail').value = formData.email;
+                document.getElementById('updateBirthday').value = formData.birthday;
+                document.getElementById('updateAge').value = formData.age;
+                document.getElementById('updateGender').value = formData.gender;
+		document.getElementById('updateLrn').value = formData.lrn;
+                document.getElementById('updateConditions').value = formData.conditions;
+                document.getElementById('updateFamily').value = formData.family;
+                document.getElementById('updateContactPerson').value = formData.contactPerson;
+                document.getElementById('updateContactNumber').value = formData.contactNumber;
+                document.getElementById('updateAddress').value = formData.address;
+                document.getElementById('updateYear').value = formData.year;
+                document.getElementById('updateBlood').value = formData.blood;
+                document.getElementById('updateVitamins').value = formData.vitamins;
+                document.getElementById('updateAllergy').value = formData.allergy;
+
+                // Show the update form
+                document.getElementById('updateForm').style.display = 'block';
+                document.getElementById('displayDetails').style.display = 'block';
+            } else {
+                alert('Student details not found.');
+            }
+        }
+
+        function updateDetails() {
+            // Retrieve values from the update form
+            var updatedFullName = document.getElementById('updateFullName').value;
+            var updatedEmail = document.getElementById('updateEmail').value;
+            var updatedBirthday = document.getElementById('updateBirthday').value;
+            var updatedAge = document.getElementById('updateAge').value;
+            var updatedGender = document.getElementById('updateGender').value;
+	    var updatedLrn = document.getElementById('updateLrn').value;
+            var updatedConditions = document.getElementById('updateConditions').value;
+            var updatedFamily = document.getElementById('updateFamily').value;
+            var updatedContactPerson = document.getElementById('updateContactPerson').value;
+            var updatedContactNumber = document.getElementById('updateContactNumber').value;
+            var updatedAddress = document.getElementById('updateAddress').value;
+            var updatedYear = document.getElementById('updateYear').value;
+            var updatedBlood = document.getElementById('updateBlood').value;
+            var updatedVitamins = document.getElementById('updateVitamins').value;
+            var updatedAllergy = document.getElementById('updateAllergy').value;
+
+            // Construct updated formData object
+            var updatedFormData = {
+                fullName: updatedFullName,
+                email: updatedEmail,
+                birthday: updatedBirthday,
+                age: updatedAge,
+                gender: updatedGender,
+		lrn: updatedLrn,
+                conditions: updatedConditions,
+                family: updatedFamily,
+                contactPerson: updatedContactPerson,
+                contactNumber: updatedContactNumber,
+                address: updatedAddress,
+                year: updatedYear,
+                blood: updatedBlood,
+                vitamins: updatedVitamins,
+                allergy: updatedAllergy
+            };
+
+            // Update the formData in localStorage
+            localStorage.setItem('formData', JSON.stringify(updatedFormData));
+
+            // Show success message
+            alert('Details updated successfully.');
+	 
+	    //Redirect to another HTML page
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+
+   <style>
+        body {
+            background-color:#B5DFDF;
+            font-family: Cambria, sans-serif;
+        }
+
+        .form-column {
+            display: inline-block;
+            width: 40%; 
+            margin-right: 5%;
+            vertical-align: top;
+        }
+
+        .form-column:last-child {
+            margin-right: 0;
+        }
+
+        .form-column label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-column input[type="text"],
+        .form-column input[type="email"],
+        .form-column input[type="number"],
+        .form-column input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-column .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CA2C9;
+            border: none;
+            border-radius: 4px;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+</style>
+</head>
+<body>
+
+<a href="login.html" style= "color: #fb3f00; text-decoration: none;" >Main Screen</a>
+</body>
+
+<h2>Student Details</h2>
+<form id="myForm" action="submit.php" method="post" onsubmit="return validateForm()">
+    <div class="form-column">
+        <label for="fullName">Full Name:</label><br>
+        <input type="text" id="fullName" name="fullName">
+        <span id="nameError" class="error"></span><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email">
+        <span id="emailError" class="error"></span><br><br>
+
+        <label for="birthday">Date of Birth:</label><br>
+        <input type="date" id="birthday" name="birthday">
+        <span id="dateError" class="error"></span><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age">
+        <span id="ageError" class="error"></span><br><br>
+
+	<label for="lrn">LRN:</label><br>
+	<input type="text" id="lrn" name="lrn" maxlength="12">
+	<span id="lrnError" class="error"></span><br><br>
+
+	<label for="year">Grade Level and Strand:</label><br>
+        <input type="text" id="year" name="year">
+        <span id="yearError" class="error"></span><br><br>
+
+	<label for="contactperson">Contact Person:</label><br>
+        <input type="text" id="contactperson" name="contactperson">
+        <span id="contactpersonError" class="error"></span><br><br>
+
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <span id="genderError" class="error"></span><br><br>
+
+
+    </div>
+
+    <div class="form-column">
+	
+        <label for="contactnumber">Contact Number:</label><br>
+        <input type="text" id="contactnumber" name="contactnumber">
+        <span id="contactnumberError" class="error"></span><br><br>
+
+        <label for="Address">Address:</label><br>
+        <input type="text" id="address" name="address">
+        <span id="addressError" class="error"></span><br><br>
+
+        <label for="blood">Blood Type:</label><br>
+        <input type="text" id="blood" name="blood">
+        <span id="bloodError" class="error"></span><br><br>
+
+	<label for="family">Family/Medical History:</label><br>
+        <input type="text" id="family" name="family">
+        <span id="familyError" class="error"></span><br><br>
+
+	<label for="conditions">Current Medical Conditions:</label><br>
+        <input type="text" id="conditions" name="conditions">
+        <span id="conditionsError" class="error"></span><br><br>
+
+	<label for="vitamins">Current Medications, Supplements, and Vitamins:</label><br>
+        <input type="text" id="vitamins" name="vitamins">
+        <span id="vitaminsError" class="error"></span><br><br>
+
+	<label for="allergy">Allergies/Adverse Reactions to Treatment:</label><br>
+        <input type="text" id="allergy" name="allergy">
+        <span id="allergyError" class="error"></span><br><br>
+	
+        <input type="submit" value="Submit" class="submit-button">
+ </div>
+</form>
+
+
+<script>
+    function validateForm() {
+        var fullName = document.getElementById("fullName").value;
+        var email = document.getElementById("email").value;
+        var birthday = document.getElementById("birthday").value;
+        var age = document.getElementById("age").value;
+	var gender = document.getElementById("gender").value;
+	var lrn = document.getElementById("lrn").value;
+        var contactperson = document.getElementById("contactperson").value;
+        var contactnumber = document.getElementById("contactnumber").value;
+        var address = document.getElementById("address").value;
+	var year = document.getElementById("year").value;
+	var blood = document.getElementById("blood").value;       
+	var conditions = document.getElementById("conditions").value;       
+	var family = document.getElementById("family").value;       
+	var vitamins = document.getElementById("vitamins").value;       
+	var allergy = document.getElementById("allergy").value;       
+
+        var isValid = true;
+
+        document.getElementById("nameError").innerHTML = "";
+        document.getElementById("emailError").innerHTML = "";
+        document.getElementById("dateError").innerHTML = "";
+        document.getElementById("ageError").innerHTML = "";
+	document.getElementById("genderError").innerHTML = "";
+	document.getElementById("lrnError").innerHTML = "";
+        document.getElementById("contactpersonError").innerHTML = "";
+        document.getElementById("contactnumberError").innerHTML = "";
+        document.getElementById("addressError").innerHTML = "";
+	document.getElementById("yearError").innerHTML = "";
+	document.getElementById("bloodError").innerHTML = "";
+	document.getElementById("conditionsError").innerHTML = "";
+	document.getElementById("familyError").innerHTML = "";
+	document.getElementById("vitaminsError").innerHTML = "";
+	document.getElementById("allergyError").innerHTML = "";
+        
+        if (fullName === "") {
+            document.getElementById("nameError").innerHTML = " required";
+            isValid = false;
+        }
+
+        if (email === "") {
+            document.getElementById("emailError").innerHTML = " required";
+            isValid = false;
+        }
+
+        if (birthday === "") {
+            document.getElementById("dateError").innerHTML = " required";
+            isValid = false;
+        }
+
+        if (age === "") {
+            document.getElementById("ageError").innerHTML = " required";
+            isValid = false;
+        }
+
+        if (gender === "") {
+            document.getElementById("genderError").innerHTML = " required";
+            isValid = false;
+        }
+
+	if (lrn === "") {
+            document.getElementById("lrnError").innerHTML = " required";
+            isValid = false;
+        }
+
+        if (contactperson === "") {
+            document.getElementById("contactpersonError").innerHTML = " required";
+            isValid = false;
+        }
+
+        if (contactnumber === "") {
+            document.getElementById("contactnumberError").innerHTML = " required";
+            isValid = false;
+        }
+    
+        if (address === "") {
+            document.getElementById("addressError").innerHTML = " required";
+            isValid = false;
+        }
+	
+	if (year === "") {
+            document.getElementById("yearError").innerHTML = " required";
+            isValid = false;
+        }
+        if (blood === "") {
+            document.getElementById("bloodError").innerHTML = " required";
+            isValid = false;
+        }
+
+	if (conditions === "") {
+            document.getElementById("conditionsError").innerHTML = " required";
+            isValid = false;
+        }
+
+	if (family === "") {
+            document.getElementById("familyError").innerHTML = " required";
+            isValid = false;
+        }
+
+	if (allergy === "") {
+            document.getElementById("allergyError").innerHTML = " required";
+            isValid = false;
+        }
+
+	if (vitamins === "") {
+            document.getElementById("vitaminsError").innerHTML = " required";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    console.log("Form submitted"); // Check if form submission event is triggered
+    if (validateForm()) {
+        saveFormData(); // Save form data to Local Storage
+        alert('Saved!'); // Display a pop-up message
+        window.location.href = "login.html"; // Redirect to another page
+    }
+});
+
+
+    function saveFormData() {
+        var formData = {
+            fullName: document.getElementById("fullName").value,
+            email: document.getElementById("email").value,
+            birthday: document.getElementById("birthday").value,
+            age: document.getElementById("age").value,
+	    gender: document.getElementById("gender").value,
+	    lrn: document.getElementById("lrn").value,
+            contactPerson: document.getElementById("contactperson").value,
+            contactNumber: document.getElementById("contactnumber").value,
+            address: document.getElementById("address").value,
+	    conditions: document.getElementById("conditions").value,
+	    family: document.getElementById("family").value,
+	    allergy: document.getElementById("allergy").value,
+	    vitamins: document.getElementById("vitamins").value,
+        };
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }
+</script>
+
+</body>
+</html>

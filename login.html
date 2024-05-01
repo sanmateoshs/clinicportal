@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Mateo Senior High School Clinic Portal</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+      background-color: #B5DFDF; 
+      font-family: Cambria, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      color: #333; 
+    }
+
+    .logout-container {
+      align-self: flex-end;
+      margin: 10px;
+    }
+
+    .logout-button {
+      background-color: #4CA2C9;
+      color: black; 
+      border: none;
+      padding: 10px 20px; 
+      border-radius: 5px; 
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .image-button {
+      border: none;
+      cursor: pointer;
+      margin: 20px; 
+    }
+
+    .image-button img {
+      width: 175px;
+      height: 175px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>San Mateo Senior High School Clinic Portal</h1>
+
+<p class="logout-container">
+  <button class="logout-button" onclick="location.href='index.html';">Log out</button>
+</p>
+
+<form action="add.html">
+  <button type="submit" class="image-button">
+    <img src="add.png" alt="Image 1">
+  </button>
+</form>
+
+<form action="password.html">
+  <button type="submit" class="image-button">
+    <img src="search.png" alt="Image 2">
+  </button>
+</form>
+
+<form action="update.html">
+  <button type="submit" class="image-button">
+    <img src="update.png" alt="Image 3">
+  </button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<center><img src="San Mateo High School Logo.png" width="200" height="200" alt="San Mateo Senior High Logo">
+<center><h1> San Mateo Senior High School Clinic Portal </h1></center>
+
+<center><p> San Mateo Senior High School Record Management System is a clinic portal that is an accessible, flexible, and easy-to-navigate tool that helps teachers access student records in one place.</p>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in Form</title>
+<style>
+body {
+    font-family: Cambria, sans-serif;
+}
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input[type="text"], input[type="password"], input[type="submit"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #178590;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.create-account-btn {
+    width: 100%;
+    background-color: #178590;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    margin-top: 0px;
+}
+.create-account-btn:hover {
+    background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+    <form action="login.html" method="post"> <!-- Change the action to the desired HTML page -->
+        <h2>Login</h2>
+        <input type="text" name="username" id="usernameInput" placeholder="Username" required>
+        <input type="password" name="password" id="passwordInput" placeholder="Password" required>
+        <input type="submit" id="loginButton" value="Login" disabled>
+    </form>
+
+
+    <!-- JavaScript to handle button click and disable/enable login button -->
+    <script>
+        // Function to check if username and password fields are filled out
+        function checkFields() {
+            var username = document.getElementById("usernameInput").value;
+            var password = document.getElementById("passwordInput").value;
+            var loginButton = document.getElementById("loginButton");
+
+            if (username.trim() !== "" && password.trim() !== "") {
+                loginButton.disabled = false;
+            } else {
+                loginButton.disabled = true;
+            }
+        }
+
+        // Add event listeners to username and password fields
+        document.getElementById("usernameInput").addEventListener("input", checkFields);
+        document.getElementById("passwordInput").addEventListener("input", checkFields);
+    </script>
+
+    <!-- Button to create a new account -->
+    <button class="create-account-btn" onclick="location.href='newaccount.html';">Create New Account</button>
+</div>
+
+</body>
+</html>

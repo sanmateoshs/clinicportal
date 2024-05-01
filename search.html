@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Display Details</title>
+    <a href="login.html" style="color: #fb3f00; text-decoration: none;">Main Screen</a>
+
+    <style>
+        body {
+            background-color: #C5F1EF;
+            color: #333;
+            font-family: Cambria, sans-serif;         }
+    </style>
+</head>
+<body>
+
+<h2>Search for Student Details</h2>
+
+<form id="searchForm">
+    <label for="searchQuery">Search by Full Name:</label><br>
+    <input type="text" id="searchQuery" name="searchQuery">
+    <input type="submit" value="Search">
+</form>
+
+<div id="displayDetails" style="display: none;">
+    <h2>Displaying Student Details</h2>
+    <p><strong>Full Name:</strong> <span id="fullName"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="birthday"></span></p>
+    <p><strong>Age:</strong> <span id="age"></span></p>
+    <p><strong>Gender:</strong> <span id="gender"></span></p>
+    <p><strong>LRN:</strong> <span id="lrn"></span></p>
+    <p><strong>Contact Person:</strong> <span id="contactPerson"></span></p>
+    <p><strong>Contact Number:</strong> <span id="contactNumber"></span></p>
+    <p><strong>Address:</strong> <span id="address"></span></p>
+    <p><strong>Grade Level and Strand:</strong> <span id="year"></span></p>
+    <p><strong>Blood Type:</strong> <span id="blood"></span></p>
+    <p><strong>Current Medications, Supplements, and Vitamins:</strong> <span id="vitamins"></span></p>
+    <p><strong>Allergies/Adverse Reactions to Treatment:</strong> <span id="allergy"></span></p>  
+    <p><strong>Family Medical History:</strong> <span id="family"></span></p>
+    <p><strong>Current Medical Conditions:</strong> <span id="conditions"></span></p>
+</div>
+
+<div id="noResultMessage" style="display: none;">
+    <p>No Student details found.</p>
+</div>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        
+        var searchQuery = document.getElementById('searchQuery').value.toLowerCase();
+        var formData = JSON.parse(localStorage.getItem('formData'));
+        
+        if (formData && formData.fullName.toLowerCase() === searchQuery) {
+            // Display the form data
+            document.getElementById('fullName').textContent = formData.fullName;
+            document.getElementById('email').textContent = formData.email;
+            document.getElementById('birthday').textContent = formData.birthday;
+            document.getElementById('age').textContent = formData.age;
+            document.getElementById('gender').textContent = formData.gender;
+	    document.getElementById('lrn').textContent = formData.lrn;
+            document.getElementById('contactPerson').textContent = formData.contactPerson;
+            document.getElementById('contactNumber').textContent = formData.contactNumber;
+            document.getElementById('address').textContent = formData.address;
+            document.getElementById('year').textContent = formData.year; 
+            document.getElementById('blood').textContent = formData.blood;   
+            document.getElementById('vitamins').textContent = formData.vitamins; 
+            document.getElementById('allergy').textContent = formData.allergy;   
+            document.getElementById('conditions').textContent = formData.conditions; 
+            document.getElementById('family').textContent = formData.family;   
+
+            // Show the details section and hide the no result message
+            document.getElementById('displayDetails').style.display = 'block';
+            document.getElementById('noResultMessage').style.display = 'none';
+        } else {
+            // Show the no result message and hide the details section
+            document.getElementById('noResultMessage').style.display = 'block';
+            document.getElementById('displayDetails').style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
